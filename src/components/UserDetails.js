@@ -1,39 +1,60 @@
 import React from "react";
 import "./UserDetails.css";
+import placeholder from "../placeholder.jpg";
 
-const UserDetails = ({ employee }) => {
+const UserDetails = ({ user }) => {
+    if (!user) {
+        user = {
+            name: {
+                first: "John",
+                last: "Doe"
+            },
+            location: {
+                city: "Somewhere",
+                state: "Earth"
+            },
+            email: "john.doe@example.com",
+            mobile: "111-867-5309",
+            office: "222-867-5309",
+            picture: {
+                large: placeholder
+            }
+        };
+    }
     return (
-        <div className="display-container border pt-2">
+        <div className="display-container border pt-4">
             <div className="row">
-                <h1 className="mx-auto">Susan Smith</h1>
+                <h1 className="mx-auto">
+                    {user.name.first || "John"} {user.name.last || "Doe"}
+                </h1>
             </div>
             <div className="row">
                 <img
                     className="rounded-circle mx-auto pt-3"
-                    src={"https://randomuser.me/api/portraits/women/62.jpg"}
+                    src={user.picture.large}
                     alt="user"
                 ></img>
             </div>
             <div className="pl-5 pt-3">
                 <p className="text-muted m-0 user-detail pt-1">
-                    <span className="font-weight-bold">Location:</span> Florida,
-                    United States
+                    <span className="font-weight-bold">Location:</span>{" "}
+                    {user.location.city}, {user.location.state}
                 </p>
                 <p className="text-muted m-0 user-detail">
                     <span className="font-weight-bold">Department:</span>{" "}
                     Marketing & Sales
                 </p>
                 <p className="text-muted m-0 user-detail">
-                    <span className="font-weight-bold">Email:</span>:
-                    susan.smith@example.com
+                    <span className="font-weight-bold">Email:</span>
+                    {user.email}
                 </p>
                 <p className="text-muted m-0 user-detail">
                     <span className="font-weight-bold">Mobile:</span>{" "}
-                    111-222-3333
+                    {user.mobile}
                 </p>
                 <p className="text-muted m-0 user-detail">
                     <span className="font-weight-bold">Office:</span>{" "}
-                    111-222-3333
+                    {user.office}
                 </p>
             </div>
         </div>

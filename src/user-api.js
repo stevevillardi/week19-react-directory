@@ -1,6 +1,6 @@
 import axios from "axios";
 
 export default axios.create({
-    baseURL: "https://https://randomuser.me/api/",
+    baseURL: "https://randomuser.me/api/",
     responseType: "json"
 });

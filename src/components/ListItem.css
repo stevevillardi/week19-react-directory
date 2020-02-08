@@ -6,6 +6,11 @@
     height: 75px;
 }
 
+.list-item:hover {
+    cursor: pointer;
+    background-color: lightblue;
+}
+
 .list-detail {
     font-size: 0.7rem;
 }
