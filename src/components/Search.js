@@ -12,21 +12,22 @@ class Search extends Component {
     }
 
     handleInputChange = event => {
-        // Getting the value and name of the input which triggered the change
-        let value = event.target.value;
-        const name = event.target.name;
-
         // Updating the input's state
-        this.setState({
-            [name]: value
-        });
-
-        this.handleFormSubmit(event);
+        this.setState(
+            {
+                searchTerm: event.target.value
+            },
+            () => {
+                this.handleFormSubmit(event);
+            }
+        );
     };
 
     handleFormSubmit = event => {
         // Preventing the default behavior of the form submit (which is to refresh the page)
         event.preventDefault();
+
+        console.log("Triggered");
         if (this.state.searchTerm) {
             let searchResults = this.props.users.filter(user => {
                 return (
@@ -54,7 +55,6 @@ class Search extends Component {
                         <div className="col-12 col-sm pr-sm-0">
                             <input
                                 className="form-control mr-sm-2"
-                                value={this.state.searchTerm}
                                 name="searchTerm"
                                 type="search"
                                 placeholder="Search"
