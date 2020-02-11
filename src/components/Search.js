@@ -30,11 +30,15 @@ class Search extends Component {
         console.log("Triggered");
         if (this.state.searchTerm) {
             let searchResults = this.props.users.filter(user => {
+                let displayName = `${user.name.first} ${user.name.last}`;
                 return (
                     user.name.first
                         .toLowerCase()
                         .includes(this.state.searchTerm.toLowerCase()) ||
                     user.name.last
+                        .toLowerCase()
+                        .includes(this.state.searchTerm.toLowerCase()) ||
+                    displayName
                         .toLowerCase()
                         .includes(this.state.searchTerm.toLowerCase())
                 );
