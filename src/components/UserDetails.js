@@ -1,31 +1,12 @@
 import React from "react";
 import "./UserDetails.css";
-import placeholder from "../placeholder.jpg";
 
 const UserDetails = ({ user }) => {
-    if (!user) {
-        user = {
-            name: {
-                first: "John",
-                last: "Doe"
-            },
-            location: {
-                city: "Somewhere",
-                state: "Earth"
-            },
-            email: "john.doe@example.com",
-            mobile: "111-867-5309",
-            office: "222-867-5309",
-            picture: {
-                large: placeholder
-            }
-        };
-    }
     return (
         <div className="display-container border pt-4">
             <div className="row">
                 <h1 className="mx-auto">
-                    {user.name.first || "John"} {user.name.last || "Doe"}
+                    {user.name.first} {user.name.last}
                 </h1>
             </div>
             <div className="row">
@@ -50,11 +31,11 @@ const UserDetails = ({ user }) => {
                 </p>
                 <p className="text-muted m-0 user-detail">
                     <span className="font-weight-bold">Mobile:</span>{" "}
-                    {user.mobile}
+                    {user.mobile || user.cell}
                 </p>
                 <p className="text-muted m-0 user-detail">
                     <span className="font-weight-bold">Office:</span>{" "}
-                    {user.office}
+                    {user.office || user.phone}
                 </p>
             </div>
         </div>

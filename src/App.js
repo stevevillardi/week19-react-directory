@@ -12,6 +12,7 @@ class App extends React.Component {
         this.state = {
             isLoading: true,
             selectedUser: null,
+            filteredUsers: null,
             users: null
         };
     }
@@ -22,21 +23,31 @@ class App extends React.Component {
         });
     };
 
+    getSearchUserDetails = users => {
+        this.setState({
+            filteredUsers: users
+        });
+    };
+
     render() {
-        const { isLoading, users, selectedUser } = this.state;
+        const { isLoading, users, selectedUser, filteredUsers } = this.state;
 
         if (isLoading) {
             return <></>;
         } else {
             return (
                 <div className="container border bg-light">
-                    <Search users={users} />
+                    <Search
+                        users={users}
+                        getSearchUserDetails={this.getSearchUserDetails}
+                    />
                     <div className="row">
                         <div className="col-md-6">
                             <List
                                 users={users}
                                 isLoading={isLoading}
                                 getUserDetails={this.getUserDetails}
+                                filteredUsers={filteredUsers}
                             />
                         </div>
                         <div className="col-md-6">
